@@ -79,7 +79,6 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     base64 (0.2.0)
-    bcrypt (3.1.20)
     bigdecimal (3.1.5)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -108,7 +107,7 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.7.1)
-    irb (1.10.1)
+    irb (1.11.0)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
@@ -146,7 +145,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    psych (5.1.1.1)
+    psych (5.1.2)
       stringio
     puma (6.4.0)
       nio4r (~> 2.0)
@@ -233,7 +232,6 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  bcrypt (~> 3.1.7)
   bootsnap
   cssbundling-rails
   debug
