@@ -61,7 +61,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "pry-rails"
+  gem "annotate"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 
+gem "stripe"
