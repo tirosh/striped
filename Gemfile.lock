@@ -125,6 +125,9 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
+    minitest-rails (7.1.0)
+      minitest (~> 5.20)
+      railties (~> 7.1.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
     net-imap (0.4.8)
@@ -238,6 +241,7 @@ DEPENDENCIES
   error_highlight (>= 0.4.0)
   importmap-rails
   jbuilder
+  minitest-rails
   pg (~> 1.1)
   pry-rails
   puma (>= 5.0)
