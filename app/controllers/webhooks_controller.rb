@@ -1,3 +1,5 @@
+require 'json'
+
 # WebhooksController handles incoming webhook requests from Stripe.
 # It processes various Stripe events and updates local subscription records accordingly.
 class WebhooksController < ApplicationController
@@ -25,7 +27,7 @@ class WebhooksController < ApplicationController
         return
       end
     else
-      event = JSON.parse(payload, symbolize_names: true)
+      event = JSON.parse(payload)
     end
 
     # Handle the event
@@ -62,7 +64,7 @@ class WebhooksController < ApplicationController
   # @param subscription [Stripe::Subscription] The subscription object from Stripe event data.
   def handle_subscription_deleted(subscription)
     # Find the subscription in your database
-    local_subscription = Subscription.find_by(stripe_subscription_id: subscription.id)
+    local_subscription = Subscription.find_by(stripe_subscription_id: subscription['id'])
 
     # Update the status to 'canceled' if it's currently 'paid'
     local_subscription.update(status: 'canceled') if local_subscription&.paid?
@@ -74,7 +76,7 @@ class WebhooksController < ApplicationController
   # @param invoice [Stripe::Invoice] The invoice object from Stripe event data.
   def handle_payment_succeeded(invoice)
     # Find the subscription associated with the invoice
-    subscription = Subscription.find_by(stripe_subscription_id: invoice.subscription)
+    subscription = Subscription.find_by(stripe_subscription_id: invoice['subscription'])
 
     # Update the subscription status to 'paid' if it's currently 'unpaid'
     subscription.update(status: 'paid') if subscription&.unpaid?
